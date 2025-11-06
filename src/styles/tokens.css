@@ -1,0 +1,13 @@
+:root {
+  --color-bg: #111111;            /* dark grey */
+  --color-text: #e6e6e6;          /* light grey */
+  --color-accent: #d4651a;        /* dark orange */
+
+  --space-s: 8px;
+  --space-m: 16px;
+  --space-l: 32px;
+
+  --radius-m: 12px;
+  --blur-strong: 20px;
+}
+

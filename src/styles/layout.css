@@ -1,0 +1,43 @@
+@import './tokens.css';
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-m);
+  background: rgba(20, 20, 20, 0.55);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(140%);
+  backdrop-filter: blur(var(--blur-strong)) saturate(140%);
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.nav {
+  display: flex;
+  gap: var(--space-m);
+}
+
+.nav a {
+  color: var(--color-text);
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.nav a.active {
+  color: var(--color-accent);
+}
+
+.page-offset {
+  padding-top: 56px; /* header height */
+}
+

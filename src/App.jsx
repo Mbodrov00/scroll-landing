@@ -6,6 +6,7 @@ import Blog from "./pages/Blog";
 import Team from "./pages/Team";
 import "./styles/base.css";
 import "./styles/layout.css";
+import HeaderWaitlist from "./components/HeaderWaitlist";
 
 export default function App() {
   return (
@@ -13,10 +14,13 @@ export default function App() {
       <LoadingOverlay />
       <header className="app-header">
         <div className="brand">planground</div>
-        <nav className="nav">
-          <NavLink to="/blog">blog</NavLink>
-          <NavLink to="/team">team</NavLink>
-        </nav>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <nav className="nav">
+            <NavLink to="/blog">blog</NavLink>
+            <NavLink to="/team">team</NavLink>
+          </nav>
+          <HeaderWaitlist />
+        </div>
       </header>
       <Routes>
         <Route path="/" element={<ScrollAnimation />} />

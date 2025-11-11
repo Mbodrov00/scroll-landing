@@ -1,6 +1,6 @@
 :root {
-  --color-bg: #111111;            /* dark grey */
-  --color-text: #e6e6e6;          /* light grey */
+  --color-bg: #f6f7fb;            /* bright background */
+  --color-text: #111111;          /* dark text */
   --color-accent: #d4651a;        /* dark orange */
 
   --space-s: 8px;

@@ -1,4 +1,14 @@
 import React, { useState } from "react";
+// Submit to backend -> Google Sheets
+async function submitEmail(email) {
+  const res = await fetch("/api/subscribe", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email })
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.ok) throw new Error(data.error || "Failed");
+}
 
 export default function ContactForm() {
   const [email, setEmail] = useState("");
@@ -10,9 +20,14 @@ export default function ContactForm() {
       setStatus("Invalid email");
       return;
     }
-    // Placeholder: replace with backend or Formspree endpoint
-    setStatus("Submitted successfully");
-    setEmail("");
+    try {
+      setStatus("Submitting...");
+      await submitEmail(email);
+      setStatus("Submitted successfully");
+      setEmail("");
+    } catch (_e) {
+      setStatus("Failed to submit");
+    }
   };
 
   return (

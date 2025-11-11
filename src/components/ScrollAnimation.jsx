@@ -1,47 +1,49 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import "./Clocks.css";
+import ContactForm from "./ContactForm";
 
 export default function ScrollAnimation() {
   const outerRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: outerRef, offset: ["start start", "end end"] });
 
+  // Static list: include all shots known by filename pattern
+  const images = [
+    ...Array.from({ length: 8 }, (_, i) => `/shots/interface_20251029_2 копия-${i + 1}.png`),
+    ...Array.from({ length: 38 }, (_, i) => `/shots/interface_20251029_2 копия-${i + 10}.png`)
+  ];
+
+  // Track current frame index based on scroll progress; render just one frame
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  React.useEffect(() => {
+    const unsub = scrollYProgress.on("change", (v) => {
+      const total = images.length;
+      const idx = Math.min(total - 1, Math.max(0, Math.floor(v * (total - 1))));
+      setCurrentIndex(idx);
+    });
+    return () => { unsub && unsub(); };
+  }, [scrollYProgress, images.length]);
+
   return (
     <section ref={outerRef} className="scroll-outer">
       <div className="sticky-viewport">
-        <div className="grid-2x2">
-          {[0, 1, 2, 3].map((index) => {
-            const speeds = [1.0, 1.4, 1.8, 2.2];
-            const start = index * 0.12;
-            const end = start + 0.5;
-            const y = useTransform(scrollYProgress, [0, 1], [
-              `${30 * speeds[index]}%`,
-              `${-30 * speeds[index]}%`,
-            ]);
-            const opacity = useTransform(scrollYProgress, [0, start, end], [0, 0, 1]);
-            return (
-              <div className="cell" key={index}>
-                <motion.div className="number" style={{ y, opacity }}>
-                  {index + 1}
-                </motion.div>
-              </div>
-            );
-          })}
+        <div className="images-stack">
+          <div className="stacked-image-wrapper" style={{ zIndex: 1 }}>
+            <img
+              src={images[currentIndex]}
+              alt={`Shot ${currentIndex + 1}`}
+              className="stacked-image"
+              loading="eager"
+            />
+          </div>
         </div>
         {/* End-of-scroll overlay */}
-        <motion.div
+        {/* <motion.div
           className="cta-overlay"
           style={{ opacity: useTransform(scrollYProgress, [0.85, 1], [0, 1]) }}
         >
-          <div className="cta-card">
-            <h2>Join the waiting list</h2>
-            <p>Be first to know when planground launches.</p>
-            <form className="cta-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="Enter your email" required />
-              <button type="submit">Notify me</button>
-            </form>
-          </div>
-        </motion.div>
+          <div className="cta-card"><ContactForm /></div>
+        </motion.div> */}
         <HintOnInactivity />
       </div>
     </section>

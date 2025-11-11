@@ -41,3 +41,47 @@
   padding-top: 56px; /* header height */
 }
 
+/* Header waitlist */
+.header-waitlist {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.hw-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hw-form input {
+  width: 0;
+  opacity: 0;
+  transition: width 0.2s ease, opacity 0.2s ease;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.8);
+  color: #111;
+}
+.hw-form.open input {
+  width: 220px;
+  opacity: 1;
+}
+.hw-button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.hw-status {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  font-size: 12px;
+  margin-top: 4px;
+  color: #111;
+}
+

@@ -14,8 +14,9 @@ export default function App() {
       <LoadingOverlay />
       <header className="app-header">
         <div className="brand">planground</div>
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+        <div className="header-controls">
           <nav className="nav">
+            <NavLink to="/">main</NavLink>
             <NavLink to="/blog">blog</NavLink>
             <NavLink to="/team">team</NavLink>
           </nav>

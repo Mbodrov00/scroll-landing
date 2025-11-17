@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 56px;
+  height: 3.5rem;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -37,8 +37,20 @@
   color: var(--color-accent);
 }
 
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+}
+
 .page-offset {
-  padding-top: 56px; /* header height */
+  padding-top: 3.5rem; /* header height */
+}
+
+main {
+  padding: var(--space-l) var(--page-padding);
+  max-width: 100%;
+  width: 100%;
 }
 
 /* Header waitlist */
@@ -50,25 +62,25 @@
 .hw-form {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-s);
 }
 .hw-form input {
   width: 0;
   opacity: 0;
   transition: width 0.2s ease, opacity 0.2s ease;
-  padding: 8px 10px;
-  border-radius: 10px;
+  padding: var(--space-s) 0.625rem;
+  border-radius: 0.625rem;
   border: 1px solid rgba(0,0,0,0.12);
   background: rgba(255,255,255,0.8);
   color: #111;
 }
 .hw-form.open input {
-  width: 220px;
+  width: 13.75rem;
   opacity: 1;
 }
 .hw-button {
-  padding: 8px 12px;
-  border-radius: 10px;
+  padding: var(--space-s) 0.75rem;
+  border-radius: 0.625rem;
   border: none;
   background: var(--color-accent);
   color: #fff;
@@ -80,8 +92,8 @@
   position: absolute;
   top: 100%;
   right: 0;
-  font-size: 12px;
-  margin-top: 4px;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
   color: #111;
 }
 

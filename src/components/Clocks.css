@@ -4,6 +4,12 @@
   background: #fff;
 }
 
+.sprite-container {
+  position: relative;
+  margin: 0 auto;
+}
+
+
 .sticky-viewport {
   position: sticky;
   top: 0;

@@ -1,49 +1,83 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef, useState, useEffect } from "react";
+import { useScroll } from "framer-motion";
 import "./Clocks.css";
 import ContactForm from "./ContactForm";
 
 export default function ScrollAnimation() {
   const outerRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: outerRef, offset: ["start start", "end end"] });
+  const { scrollYProgress } = useScroll({
+    target: outerRef,
+    offset: ["start start", "end end"],
+  });
 
-  // Static list: include all shots known by filename pattern
-  const images = [
-    ...Array.from({ length: 8 }, (_, i) => `/shots/interface_20251029_2 копия-${i + 1}.png`),
-    ...Array.from({ length: 38 }, (_, i) => `/shots/interface_20251029_2 копия-${i + 10}.png`)
-  ];
+  const totalFrames = 10; // adjust to your actual number of frames
+  const framePath = (i) => `/shots/frame-${i + 1}.png`;
 
-  // Track current frame index based on scroll progress; render just one frame
-  const [currentIndex, setCurrentIndex] = React.useState(0);
-  React.useEffect(() => {
+  const [images, setImages] = useState(Array(totalFrames).fill(null));
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Sequentially preload frames
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadFrame = async (index) => {
+      if (index >= totalFrames || !isMounted) return;
+      const img = new Image();
+      img.src = framePath(index);
+      img.onload = () => {
+        if (!isMounted) return;
+        setImages((prev) => {
+          const copy = [...prev];
+          copy[index] = img.src;
+          return copy;
+        });
+        loadFrame(index + 1); // load next frame
+      };
+      img.onerror = () => {
+        console.error(`Failed to load frame ${index + 1}`);
+        loadFrame(index + 1); // continue even if a frame fails
+      };
+    };
+
+    loadFrame(0);
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // Update frame based on scroll
+  useEffect(() => {
     const unsub = scrollYProgress.on("change", (v) => {
-      const total = images.length;
-      const idx = Math.min(total - 1, Math.max(0, Math.floor(v * (total - 1))));
+      const idx = Math.min(totalFrames - 1, Math.floor(v * (totalFrames - 1)));
       setCurrentIndex(idx);
     });
-    return () => { unsub && unsub(); };
-  }, [scrollYProgress, images.length]);
+    return () => unsub && unsub();
+  }, [scrollYProgress]);
 
   return (
     <section ref={outerRef} className="scroll-outer">
       <div className="sticky-viewport">
         <div className="images-stack">
           <div className="stacked-image-wrapper" style={{ zIndex: 1 }}>
-            <img
-              src={images[currentIndex]}
-              alt={`Shot ${currentIndex + 1}`}
-              className="stacked-image"
-              loading="eager"
-            />
+            {images[currentIndex] ? (
+              <img
+                src={images[currentIndex]}
+                alt={`Frame ${currentIndex + 1}`}
+                className="stacked-image"
+                loading="eager"
+              />
+            ) : (
+              <div
+                style={{
+                  width: "800px", // fallback width, adjust to your frame size
+                  height: "450px",
+                  backgroundColor: "#000",
+                }}
+              />
+            )}
           </div>
         </div>
-        {/* End-of-scroll overlay */}
-        {/* <motion.div
-          className="cta-overlay"
-          style={{ opacity: useTransform(scrollYProgress, [0.85, 1], [0, 1]) }}
-        >
-          <div className="cta-card"><ContactForm /></div>
-        </motion.div> */}
         <HintOnInactivity />
       </div>
     </section>
@@ -52,13 +86,11 @@ export default function ScrollAnimation() {
 
 function HintOnInactivity() {
   const hintRef = useRef(null);
-  React.useEffect(() => {
+  useEffect(() => {
     let timer;
-    const show = () => {
-      if (hintRef.current) hintRef.current.classList.add("visible");
-    };
+    const show = () => hintRef.current?.classList.add("visible");
     const hide = () => {
-      if (hintRef.current) hintRef.current.classList.remove("visible");
+      hintRef.current?.classList.remove("visible");
       window.removeEventListener("scroll", hide, { passive: true });
       window.removeEventListener("wheel", hide, { passive: true });
       window.removeEventListener("touchstart", hide, { passive: true });

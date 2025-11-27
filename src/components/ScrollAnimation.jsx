@@ -1,7 +1,15 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useScroll } from "framer-motion";
-import "./Clocks.css";
-import ContactForm from "./ContactForm";
+import '../styles/variables.css';
+import '../styles/base.css';
+import '../styles/layout.css';
+import '../styles/buttons.css';
+import '../styles/loader.css';
+import '../styles/header-waitlist.css';
+import '../styles/gallery.css';
+import '../styles/cta.css';
+import '../styles/animations.css';
+
 
 export default function ScrollAnimation() {
   const outerRef = useRef(null);

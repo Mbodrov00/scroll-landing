@@ -4,8 +4,15 @@ import ScrollAnimation from "./components/ScrollAnimation";
 import LoadingOverlay from "./components/LoadingOverlay";
 import Blog from "./pages/Blog";
 import Team from "./pages/Team";
-import "./styles/base.css";
-import "./styles/layout.css";
+import './styles/variables.css';
+import './styles/base.css';
+import './styles/layout.css';
+import './styles/buttons.css';
+import './styles/loader.css';
+import './styles/header-waitlist.css';
+import './styles/gallery.css';
+import './styles/cta.css';
+import './styles/animations.css';
 import HeaderWaitlist from "./components/HeaderWaitlist";
 
 export default function App() {

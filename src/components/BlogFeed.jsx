@@ -1,36 +1,58 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import posts from "./Posts";
+import PostTemplate from "./PostTemplate";
+import "../styles/variables.css";
+import "../styles/blog-feed.css"; // contains all layout rules
 
 export default function BlogFeed() {
-  const posts = [
-    { title: "Planground is a web application for creating architectural plans.",
-      date: "2025-11-01",
-      summary: "Its primary function is to translate abstract, rough geometry into a clear architectural plan based on rules defined by the user."
-    },
-    {
-      title: "How does it work?",
-      date: "2025-11-01",
-      summary: "The architect (=user) works on the plan at an abstract level, adding, removing, reducing, enlarging rooms, drawing on top, giving specific prompts for the inclusion of a number of rooms with various connections and areas." },
-    {
-      title: "If you are an architect, you can use Planground to create architectural plans.",
-      date: "2025-11-01",
-      summary: "Sign up for the waitlist to get early access to the product."
-    },
-    {
-      title: "If you want to become a part of Plangroun's team",
-      date: "2025-11-01",
-      summary: "Send us an email with your resume to tg @mmbodrov"
-    },
-  ];
+  const scrollRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isNarrow, setIsNarrow] = useState(false);
+
+  useEffect(() => {
+    const update = () => setIsNarrow(window.innerWidth < 768);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const handleWheel = (e) => {
+    e.preventDefault();
+
+    if (e.deltaY > 0 && activeIndex < posts.length - 1) {
+      setActiveIndex((i) => i + 1);
+    }
+    if (e.deltaY < 0 && activeIndex > 0) {
+      setActiveIndex((i) => i - 1);
+    }
+  };
+
+  useEffect(() => {
+    if (!scrollRef.current) return;
+
+    const viewHeight = scrollRef.current.clientHeight;
+
+    scrollRef.current.scrollTo({
+      top: activeIndex * viewHeight,
+      behavior: "smooth",
+    });
+  }, [activeIndex]);
 
   return (
-    <div className="cards-grid">
-      {posts.map((p, i) => (
-        <article key={i} className="content-card">
-          <small className="card-meta">{p.date}</small>
-          <h3>{p.title}</h3>
-          <p>{p.summary}</p>
-        </article>
-      ))}
+    <div className="blog-feed">
+      <div
+        ref={scrollRef}
+        className="blog-feed-scroll"
+        onWheel={handleWheel}
+      >
+        {posts.map((post, index) => (
+          <PostTemplate
+            key={index}
+            post={post}
+            isNarrow={isNarrow}
+          />
+        ))}
+      </div>
     </div>
   );
 }

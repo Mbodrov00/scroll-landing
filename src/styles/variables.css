@@ -1,0 +1,30 @@
+:root {
+  /* Colors */
+  --color-bg: #f6f7fb;
+  --color-text: #111111;
+  --color-accent: #d4651a;
+  --btn-bg: #fff;
+  --btn-border: #000;
+  --arrow-color: #000;
+  --btn-hover-bg: #000;
+  --btn-hover-border: #fff;
+  --arrow-hover-color: #fff;
+  --loader-bg: #000;
+  --loader-color: #000;
+
+  /* Fonts */
+  --font-sans: 'Roboto', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-size-base: 16px;
+
+  /* Spacing */
+  --space-s: 0.5rem;
+  --space-m: 1rem;
+  --space-l: 2rem;
+  --space-xl: 3rem;
+  --page-padding: 5vw;
+
+  /* Layout */
+  --header-height: 3.5rem;
+  --radius-m: 0.75rem;
+  --blur-strong: 1.25rem;
+}

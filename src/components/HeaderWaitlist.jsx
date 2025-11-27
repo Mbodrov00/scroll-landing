@@ -43,7 +43,7 @@ export default function HeaderWaitlist() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button type="submit" className="hw-button">join the waiting list</button>
+        <button className="hw-button waitlist">Join the waiting list</button>
       </form>
       <div className="hw-status">{status}</div>
     </div>

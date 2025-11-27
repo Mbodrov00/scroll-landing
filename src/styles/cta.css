@@ -1,0 +1,38 @@
+.cta-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(0,0,0,0.6) 80%); pointer-events: none; }
+
+.cta-card {
+  pointer-events: auto;
+  padding: var(--space-l);
+  background: rgba(30, 30, 30, 0.6);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-m);
+  -webkit-backdrop-filter: blur(var(--blur-strong));
+  backdrop-filter: blur(var(--blur-strong));
+  max-width: 560px;
+  width: min(92%, 560px);
+  text-align: center;
+}
+
+.cta-card h2 { margin: 0 0 var(--space-m); }
+.cta-card p { margin: 0 0 var(--space-m); opacity: 0.85; }
+
+.cta-form { display: flex; gap: var(--space-m); }
+
+.cta-form input[type="email"] {
+  flex: 1 1 auto;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: var(--color-text);
+}
+
+.cta-form button {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -1,0 +1,11 @@
+.hw-button.waitlist {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+  animation: shine 10s infinite;
+}
+
+@keyframes shine {
+  0%, 90%, 100% { box-shadow: none; }
+  95% { box-shadow: 0 0 20px #fff; }
+}

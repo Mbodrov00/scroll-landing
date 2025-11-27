@@ -1,0 +1,75 @@
+.blog-feed {
+  width: 100vw;
+  height: calc(100vh - var(--header-height));
+  overflow: hidden;
+}
+
+.blog-feed-scroll {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Each post occupies exactly one viewport */
+.post-section {
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  box-sizing: border-box;
+  padding: var(--space-xl) var(--page-padding);
+}
+
+/* Layout inside a post */
+.post-layout {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: var(--space-l);
+}
+
+.post-layout.wide {
+  flex-direction: row;
+}
+
+.post-layout.narrow {
+  flex-direction: column;
+}
+
+/* Image column */
+.post-image-column {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.gallery-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  overflow-y: hidden;
+  height: 100%;
+}
+
+.gallery-image {
+  width: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-m);
+}
+
+/* Text column */
+.post-text-column {
+  flex: 2;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.post-text-column h2 {
+  margin-bottom: var(--space-m);
+}

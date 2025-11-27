@@ -1,0 +1,45 @@
+.scroll-outer {
+    position: relative;
+    height: 600vh;
+    background: #fff;
+}
+
+.sprite-container {
+    position: relative;
+    margin: 0 auto;
+}
+
+.sticky-viewport {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.images-stack {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.stacked-image-wrapper {
+    position: relative;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: opacity;
+}
+
+.stacked-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.stacked-image.with-outline {
+    filter: drop-shadow(0 0 2px #ffffff);
+}

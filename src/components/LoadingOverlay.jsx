@@ -6,7 +6,6 @@ export default function LoadingOverlay() {
   useEffect(() => {
     const onLoaded = () => {
       // Transition sequence
-      setPhase("star");
       const t1 = setTimeout(() => setPhase("quarters"), 600);
       const t2 = setTimeout(() => {
         setPhase("done");

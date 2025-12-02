@@ -9,6 +9,7 @@ import '../styles/header-waitlist.css';
 import '../styles/gallery.css';
 import '../styles/cta.css';
 import '../styles/animations.css';
+import '../styles/inactivity-hint.css';
 
 
 export default function ScrollAnimation() {
@@ -18,8 +19,8 @@ export default function ScrollAnimation() {
     offset: ["start start", "end end"],
   });
 
-  const totalFrames = 10; // adjust to your actual number of frames
-  const framePath = (i) => `/shots/frame-${i + 1}.png`;
+  const totalFrames = 46; // adjust to your actual number of frames
+  const framePath = (i) => `/shots/frame-${i + 1}-webp.webp`;
 
   const [images, setImages] = useState(Array(totalFrames).fill(null));
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -94,31 +95,49 @@ export default function ScrollAnimation() {
 
 function HintOnInactivity() {
   const hintRef = useRef(null);
+  const inactivityTimer = useRef(null);
+
   useEffect(() => {
-    let timer;
-    const show = () => hintRef.current?.classList.add("visible");
-    const hide = () => {
-      hintRef.current?.classList.remove("visible");
-      window.removeEventListener("scroll", hide, { passive: true });
-      window.removeEventListener("wheel", hide, { passive: true });
-      window.removeEventListener("touchstart", hide, { passive: true });
+    const HINT_DELAY = 10000;
+
+    const showHint = () => {
+      if (hintRef.current) {
+        hintRef.current.classList.add("visible");
+      }
     };
-    const startTimer = () => {
-      clearTimeout(timer);
-      timer = setTimeout(show, 10000);
-      window.addEventListener("scroll", hide, { passive: true });
-      window.addEventListener("wheel", hide, { passive: true });
-      window.addEventListener("touchstart", hide, { passive: true });
+
+    const hideHint = () => {
+      if (hintRef.current) {
+        hintRef.current.classList.remove("visible");
+      }
     };
-    const onReady = () => startTimer();
-    window.addEventListener("app-ready", onReady, { once: true });
+
+    const resetTimer = () => {
+      hideHint();
+      clearTimeout(inactivityTimer.current);
+      inactivityTimer.current = setTimeout(showHint, HINT_DELAY);
+    };
+
+    // initial timer when component mounts
+    inactivityTimer.current = setTimeout(showHint, HINT_DELAY);
+
+    // hide on scroll and restart inactivity timer
+    const onScroll = () => {
+      resetTimer();
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+
     return () => {
-      clearTimeout(timer);
-      window.removeEventListener("app-ready", onReady);
-      window.removeEventListener("scroll", hide);
-      window.removeEventListener("wheel", hide);
-      window.removeEventListener("touchstart", hide);
+      clearTimeout(inactivityTimer.current);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
-  return <div ref={hintRef} className="scroll-hint-floating">Scroll to explore the demo ↓</div>;
+
+  return (
+    <div ref={hintRef} className="scroll-hint-floating">
+      Scroll to explore the demo ↓
+    </div>
+  );
 }
+

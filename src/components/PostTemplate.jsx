@@ -58,8 +58,12 @@ export default function PostTemplate({ post, isNarrow }) {
 
         {/* TEXT */}
         <div className="post-text-column">
-          <h2 className="post-title">{post.title}</h2>
-          <div className="post-text">{post.text}</div>
+          <h5 className="post-title">{post.title}</h5>
+          <div className="post-text">
+            <pre>
+              {post.text}
+            </pre>
+          </div>
         </div>
       </div>
     </section>

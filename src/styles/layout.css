@@ -9,10 +9,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--space-m);
-  background: rgba(20, 20, 20, 0.55);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  -webkit-backdrop-filter: blur(var(--blur-strong)) saturate(140%);
-  backdrop-filter: blur(var(--blur-strong)) saturate(140%);
+  background: rgba(0, 0, 0, 0.59);
+  border-radius: 0px, 0px, 16px, 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.48);
+  -webkit-backdrop-filter: blur(6.8px);
+  backdrop-filter: blur(6.8px);
 }
 
 .brand {

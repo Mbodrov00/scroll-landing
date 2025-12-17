@@ -54,6 +54,7 @@
   flex: 2;
   overflow-y: auto;
   text-align: left;
+  white-space: pre-wrap;
 }
 
 .post-title {

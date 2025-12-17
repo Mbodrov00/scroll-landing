@@ -46,8 +46,8 @@ THE UPDATED CONFIGURATION IS THEN RENDERED AND INTERPRETED BY THE USER AS A NEW 
     text: "",
     image: "/public/misc1.webp",
     extraImages: [
-        "public/misc2.webp",
-        "public/misc3.webp"
+        "/misc2.webp",
+        "/misc3.webp"
     ],
     showOrder: "text-first"
   }

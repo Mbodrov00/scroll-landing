@@ -21,7 +21,7 @@ THE PROCESS WORKS ACROSS FOUR LEVELS:
 PLANGROUND REPLACES MANUAL WALL DRAWING AND THE SEARCH FOR WORKABLE ROOM CONFIGURATIONS WITH A GEOMETRY SOLVER THAT COMPUTES
 SPATIAL SOLUTIONS. ARCHITECTS WORK DIRECTLY WITH SPACES WHILE THE ENGINE RESOLVES THE GEOMETRY.
     `,
-    image: "/public/usp-webp.webp",
+    image: "/usp-webp.webp",
     extraImages: [],
     showOrder: "image-first"
   },
@@ -34,7 +34,7 @@ ROOMS CAN BE REMOVED, RESIZED, OR REPOSITIONED, AND THE REMAINING ROOMS ADAPT AU
 
 THE UPDATED CONFIGURATION IS THEN RENDERED AND INTERPRETED BY THE USER AS A NEW FINISHED PLAN.
     `,
-    image: "/public/example1-webp.webp",
+    image: "/example1-webp.webp",
     extraImages: [
         "/example2-webp.webp",
         "/example3-webp.webp"
@@ -44,7 +44,7 @@ THE UPDATED CONFIGURATION IS THEN RENDERED AND INTERPRETED BY THE USER AS A NEW 
   {
     title: "CONFERENCES AND SHOWS",
     text: "",
-    image: "/public/misc1.webp",
+    image: "/misc1.webp",
     extraImages: [
         "/misc2.webp",
         "/misc3.webp"

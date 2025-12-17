@@ -1,62 +1,102 @@
+/* One post = one viewport */
 .post-section {
-  width: 100%;
-  height: calc(100vh - var(--header-height));
-  padding: var(--header-height) var(--page-padding);
+  width: 100% !important;
+  height: calc(100vh - var(--header-height)) !important;
   box-sizing: border-box;
+  padding: var(--space-xl) var(--page-padding);
+  display: flex;
+  align-items: stretch;
+  overflow: hidden !important;
 }
 
+/* Main layout */
 .post-layout {
   display: flex;
   gap: var(--space-l);
-  width: 100%;
-  height: 100%;
-}
-
-.post-layout.narrow {
-  flex-direction: column;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0;
+  overflow: hidden !important;
 }
 
 .post-layout.wide {
   flex-direction: row;
 }
 
-/* IMAGE COLUMN */
-.post-image-column {
-  flex: 1;
-  display: flex;
-  position: relative;
-  min-height: 0;
+.post-layout.narrow {
+  flex-direction: column;
 }
 
+/* IMAGE COLUMN — 1/4 of screen width */
+.post-image-column {
+  flex: 0 0 25% !important;
+  width: 25% !important;
+  min-width: 0 !important;
+  max-width: 25% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Constrains image area */
 .gallery-wrapper {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
   position: relative;
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .gallery-column {
   display: flex;
   flex-direction: column;
   gap: var(--space-s);
-  overflow-y: hidden;
-  height: 100%;
+  height: 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-y: auto;
+  overflow-x: hidden !important;
+  scroll-snap-type: y mandatory;
 }
 
+/* IMAGE RULE — FORCE CONSTRAINT */
 .gallery-image {
-  width: 100%;
-  object-fit: contain;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 100% !important;
+  
+  object-fit: contain !important;
+  display: block !important;
+  
+  scroll-snap-align: start;
   border-radius: var(--radius-m);
 }
 
-/* TEXT COLUMN */
+/* TEXT COLUMN — 3/4 of screen width */
 .post-text-column {
-  flex: 2;
+  flex: 0 0 calc(75% - var(--space-l)) !important;
+  width: calc(75% - var(--space-l)) !important;
+  min-width: 0;
+  max-width: calc(75% - var(--space-l)) !important;
+  height: 100% !important;
   overflow-y: auto;
+  overflow-x: hidden !important;
   text-align: left;
-  white-space: pre-wrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .post-title {
   margin-bottom: var(--space-m);
+}
+
+.post-text pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: inherit;
+  margin: 0;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import GalleryButtons from "./GalleryButtons";
+import "../styles/post-template.css";  // ADD THIS LINE
 
 export default function PostTemplate({ post, isNarrow }) {
   const images = [post.image, ...post.extraImages];

@@ -1,99 +1,16 @@
-/* Prevent horizontal overflow */
-html, body {
+html,
+body {
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
 }
 
 .blog-feed {
   width: 100%;
-  height: calc(100vh - var(--header-height));
-  overflow: visible;
+  min-height: calc(100vh - var(--header-height));
 }
 
-/* Allow the scroll container to be centered and prevent oversizing */
 .blog-feed-scroll {
   width: 100%;
-  height: auto;
-  overflow: visible;
-  scroll-behavior: smooth;
   max-width: 100%;
-  overflow-y: auto;
-}
-
-/* Each post occupies exactly one viewport */
-.post-section {
-  width: 100%;
-  height: calc(100vh - var(--header-height));
-  box-sizing: border-box;
-  padding: var(--space-xl) var(--page-padding);
-  max-width: 100%; /* prevents layout from growing wider than screen */
-}
-
-/* Layout inside a post */
-.post-layout {
-  height: 100%;
-  min-width: auto;
-  width: 100%;
-  display: flex;
-  gap: var(--space-l);
-
-  /* required for flex children to shrink properly and allow text wrapping */
-  min-width: 0;
-}
-
-.post-layout.wide {
-  flex-direction: row;
-}
-
-.post-layout.narrow {
-  flex-direction: column;
-}
-
-/* Image column */
-.post-image-column {
-  flex: 1;
-  min-height: 0;
-  min-width: 0; /* enables shrinking and prevents overflow */
-  display: flex;
-}
-
-.gallery-wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.gallery-column {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-s);
-  overflow-y: hidden;
-  height: 100%;
-}
-
-.gallery-image {
-  width: 100%;
-  max-width: 100%; /* ensures images cannot exceed container width */
-  object-fit: contain;
-  border-radius: var(--radius-m);
-}
-
-.post-text-column {
-  flex: 2;
-  overflow-y: auto;
-  overflow-x: hidden;        /* prevent horizontal scrolling inside the text column */
-  text-align: left;
-
-  /* force wrapping of long words/segments */
-  white-space: normal;       /* allow normal wrapping */
-  overflow-wrap: anywhere;   /* break at any character if needed */
-  word-break: break-word;    /* legacy fallback for some browsers */
-  hyphens: auto;             /* allow hyphenation where supported */
-
-  min-width: 0;              /* allow flex child to shrink */
-  box-sizing: border-box;
-}
-
-.post-text-column h2 {
-  margin-bottom: var(--space-m);
 }

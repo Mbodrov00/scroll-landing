@@ -44,10 +44,10 @@ THE UPDATED CONFIGURATION IS THEN RENDERED AND INTERPRETED BY THE USER AS A NEW 
   {
     title: "CONFERENCES AND SHOWS",
     text: "",
-    image: "/public/misc1.jpg",
+    image: "/public/misc1.webp",
     extraImages: [
-        "public/misc2.jpg",
-        "public/misc3.jpg"
+        "public/misc2.webp",
+        "public/misc3.webp"
     ],
     showOrder: "text-first"
   }

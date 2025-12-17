@@ -16,29 +16,6 @@ export default function BlogFeed() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // const handleWheel = (e) => {
-  //   e.preventDefault();
-
-  //   if (e.deltaY > 0 && activeIndex < posts.length - 1) {
-  //     setActiveIndex((i) => i + 1);
-  //   }
-
-  //   if (e.deltaY < 0 && activeIndex > 0) {
-  //     setActiveIndex((i) => i - 1);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (!scrollRef.current) return;
-
-  //   const viewHeight = scrollRef.current.clientHeight;
-
-  //   scrollRef.current.scrollTo({
-  //     top: activeIndex * viewHeight,
-  //     behavior: "smooth",
-  //   });
-  // }, [activeIndex]);
-
   return (
     <div className="blog-feed">
       <div

@@ -19,3 +19,8 @@ body {
   white-space: nowrap;
   border: 0;
 }
+
+* {
+  backdrop-filter: none !important;
+  filter: none !important;
+}

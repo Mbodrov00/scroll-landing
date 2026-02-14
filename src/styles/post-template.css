@@ -100,3 +100,9 @@
   font-family: inherit;
   margin: 0;
 }
+
+/* Force normal casing in Blog section */
+.post-text-column,
+.post-text-column * {
+  text-transform: none !important;
+}

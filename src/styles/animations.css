@@ -1,3 +1,19 @@
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes star-pop { 0% { transform: scale(0.6); opacity: 0.6; } 100% { transform: scale(1); opacity: 1; } }
 @keyframes quarters-flash { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+/* Make the hero video fully visible (no cropping) */
+.sticky-viewport {
+  height: 100vh;
+}
+
+.stacked-image-wrapper {
+  height: 100%;
+}
+
+.stacked-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}

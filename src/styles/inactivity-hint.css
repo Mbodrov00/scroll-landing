@@ -31,3 +31,8 @@
 #scroll-hint {
   transition: opacity 0.4s ease;
 }
+
+.scroll-hint-floating {
+  display: none !important;
+}
+

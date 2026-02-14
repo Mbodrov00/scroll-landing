@@ -14,3 +14,10 @@ body {
   width: 100%;
   max-width: 100%;
 }
+
+
+/* Force normal casing everywhere in Blog route */
+.blog-feed,
+.blog-feed * {
+  text-transform: none !important;
+}

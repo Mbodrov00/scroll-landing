@@ -11,15 +11,16 @@
   justify-content: space-between;
   padding: 0 var(--space-m);
 
-  background-color: rgba(255, 255, 255, 0.92) !important; /* white, semi-transparent */
+  background-color: rgba(255, 255, 255, 0.92) !important;
   border-bottom: 1px solid black !important;
 
-  border-radius: 0 0 16px 16px;
-  box-shadow: none !important;
+  border-radius: 0;   /* no rounded corners */
+  box-shadow: none;
 
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
+
 
 
 

@@ -82,7 +82,7 @@ main {
 .card-meta {
   display: block;
   font-size: 0.85rem;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: var(--space-s);

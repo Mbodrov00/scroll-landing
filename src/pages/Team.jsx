@@ -5,7 +5,7 @@ export default function Team() {
     { 
       name: "Michael Bodrov", 
       role: "Founder & CEO", 
-      bio: "M.Sc. in Architecture, Founder & Computational Architect" 
+      bio: "M.Sc. in Architecture, Computational Architect" 
     }
   ];
 

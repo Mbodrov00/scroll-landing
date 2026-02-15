@@ -2,8 +2,11 @@ import React from "react";
 
 export default function Team() {
   const teammates = [
-    { name: "Michael Bodrov", role: "Founder & CEO", bio: "Architect and in charge of business development" },
-    { name: "Grigorii Bolshakov", role: "CTO", bio: "Software engineer" },
+    { 
+      name: "Michael Bodrov", 
+      role: "Founder & CEO", 
+      bio: "M.Sc. in Architecture, Founder & Computational Architect" 
+    }
   ];
 
   return (
